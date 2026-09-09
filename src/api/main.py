@@ -34,9 +34,13 @@ async def lifespan(app: FastAPI):
     print("Loading model from MLflow Registry...")
 
     mlflow.set_tracking_uri(TRACKING_URI)
-    model = mlflow.pyfunc.load_model(MODEL_URI)
 
-    print("Model loaded successfully.")
+    try:
+        model = mlflow.pyfunc.load_model(MODEL_URI)
+        print("Model loaded successfully.")
+    except Exception as exc:
+        model = None
+        print(f"WARNING: Model could not be loaded: {exc}")
 
     yield
 
