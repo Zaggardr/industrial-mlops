@@ -29,6 +29,11 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/zaggardr/industrial-mlops:latest
+      - name: Smoke test container
+        run: |
+          docker run -d --name mlops-api -p 8000:8000 ghcr.io/zaggardr/industrial-mlops:latest
+          sleep 10
+          curl --fail http://localhost:8000/health
     permissions:
       contents: read
       packages: write
