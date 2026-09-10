@@ -8,6 +8,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 ENV MLFLOW_TRACKING_URI="http://mlflow:5000"
-ENV PYTHONPATH="/app/src"
+ENV PYTHONPATH="/app"
 
 CMD ["python", "-m", "uvicorn", "src.api.main:app", "--host", "0.0.0.0", "--port", "8000"]
