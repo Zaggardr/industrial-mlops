@@ -34,11 +34,6 @@ jobs:
           docker run -d --name mlops-api -p 8000:8000 ghcr.io/zaggardr/industrial-mlops:latest
           sleep 10
           curl --fail http://localhost:8000/health
-      - name: Show container diagnostics
-        if: always()
-        run: |
-          docker ps -a
-          docker logs mlops-api
     permissions:
       contents: read
       packages: write
