@@ -10,7 +10,10 @@ TRACKING_URI = os.getenv(
     "MLFLOW_TRACKING_URI",
     "sqlite:///C:/Users/User/Desktop/ML/industrial-mlops/mlflow.db",
 )
-MODEL_URI = "models:/CaliforniaHousingModel/1"
+MODEL_URI = os.getenv(
+    "MLFLOW_MODEL_URI",
+    "models:/CaliforniaHousingModel/1",
+)
 
 model = None
 
